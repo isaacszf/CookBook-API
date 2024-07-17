@@ -1,12 +1,14 @@
 using Domain.Repositories;
 using Domain.Repositories.User;
 using Domain.Security.Tokens;
+using Domain.Services.Cryptography;
 using Domain.Services.LoggedUser;
 using Infra.DataAccess;
 using Infra.DataAccess.Repositories;
 using Infra.Extensions;
 using Infra.Security.Tokens.Access.Generator;
 using Infra.Security.Tokens.Access.Validator;
+using Infra.Services.Cryptography;
 using Infra.Services.LoggedUser;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -21,7 +23,7 @@ public static class DependencyInjectionExtension
         AddDbContext(services, config);
         AddRepos(services);
         AddTokens(services, config);
-        AddServices(services);
+        AddServices(services, config);
     }
 
     private static void AddDbContext(IServiceCollection services, IConfiguration config)
@@ -45,9 +47,13 @@ public static class DependencyInjectionExtension
         services.AddScoped<IAccessTokenValidator>(_ => new JwtTokenValidator(signInKey));
     }
     
-    private static void AddServices(IServiceCollection services)
+    private static void AddServices(IServiceCollection services, IConfiguration config)
     {
         services.AddScoped<ILoggedUser, LoggedUser>();
+        
+        // Password
+        var encryptApiKey = config.GetSection("Settings:Password:EncryptAPIKey").Value;
+        services.AddScoped<IPasswordEncrypter>(_ => new PasswordEncrypter(encryptApiKey!));
     }
     
     private static void AddRepos(IServiceCollection services)

@@ -1,5 +1,4 @@
 using Application.Services.AutoMapper;
-using Application.Services.Cryptography;
 using Application.UseCases.User.Login.DoLogin;
 using Application.UseCases.User.Profile;
 using Application.UseCases.User.Register;
@@ -13,7 +12,6 @@ public static class DependencyInjectionExtension
     public static void AddApplication(this IServiceCollection services, IConfiguration config)
     {
         AddMapper(services);
-        AddPasswordEncrypt(services, config);
         AddUseCases(services);
     }
 
@@ -24,12 +22,6 @@ public static class DependencyInjectionExtension
         
         services.AddScoped<IGetUserProfileUseCase, GetUserProfileUseCase>();
         services.AddScoped<IUpdateProfileUseCase, UpdateProfileUseCase>();
-    }
-
-    private static void AddPasswordEncrypt(IServiceCollection services, IConfiguration config)
-    {
-        var encryptApiKey = config.GetSection("Settings:Password:EncryptAPIKey").Value;
-        services.AddScoped(_ => new PasswordEncrypt(encryptApiKey!));
     }
     
     private static void AddMapper(IServiceCollection services)

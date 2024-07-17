@@ -1,13 +1,14 @@
 using System.Security.Cryptography;
 using System.Text;
+using Domain.Services.Cryptography;
 
-namespace Application.Services.Cryptography;
+namespace Infra.Services.Cryptography;
 
-public class PasswordEncrypt
+public class PasswordEncrypter : IPasswordEncrypter
 {
     private readonly string _encryptApiKey;
     
-    public PasswordEncrypt(string apiKey) => _encryptApiKey = apiKey;
+    public PasswordEncrypter(string apiKey) => _encryptApiKey = apiKey;
     
     public string Encrypt(string password)
     {

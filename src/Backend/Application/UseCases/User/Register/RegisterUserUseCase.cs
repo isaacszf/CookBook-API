@@ -1,9 +1,9 @@
-using Application.Services.Cryptography;
 using AutoMapper;
 using Communication.Requests;
 using Communication.Responses;
 using Domain.Repositories;
 using Domain.Repositories.User;
+using Domain.Services.Cryptography;
 using Exceptions;
 using Exceptions.Base;
 using FluentValidation.Results;
@@ -16,14 +16,14 @@ public class RegisterUserUseCase: IRegisterUserUseCase
     private readonly IUserReadOnlyRepository _readOnlyRepository;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
-    private readonly PasswordEncrypt _passwordEncrypt;
+    private readonly IPasswordEncrypter _passwordEncrypt;
 
     public RegisterUserUseCase(
         IUserWriteOnlyRepository writeOnlyRepository,
         IUserReadOnlyRepository readOnlyRepository,
         IUnitOfWork unitOfWork,
         IMapper mapper,
-        PasswordEncrypt passwordEncrypt)
+        IPasswordEncrypter passwordEncrypt)
     {
         _writeOnlyRepository = writeOnlyRepository;
         _readOnlyRepository = readOnlyRepository;

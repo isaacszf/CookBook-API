@@ -1,8 +1,8 @@
-using Application.Services.Cryptography;
 using Communication.Requests;
 using Communication.Responses;
 using Domain.Repositories.User;
 using Domain.Security.Tokens;
+using Domain.Services.Cryptography;
 using Exceptions.Base;
 
 namespace Application.UseCases.User.Login.DoLogin;
@@ -10,12 +10,12 @@ namespace Application.UseCases.User.Login.DoLogin;
 public class DoLoginUseCase : IDoLoginUseCase
 {
     private readonly IUserReadOnlyRepository _readOnlyRepository;
-    private readonly PasswordEncrypt _passwordEncrypt;
+    private readonly IPasswordEncrypter _passwordEncrypt;
     private readonly IAccessTokenGenerator _accessTokenGenerator;
     
     public DoLoginUseCase(
         IUserReadOnlyRepository readOnlyRepository,
-        PasswordEncrypt passwordEncrypt,
+        IPasswordEncrypter passwordEncrypt,
         IAccessTokenGenerator accessTokenGenerator)
     {
         _readOnlyRepository = readOnlyRepository;
