@@ -1,3 +1,4 @@
+using Application.SharedValidators;
 using Communication.Requests;
 using Exceptions;
 using FluentValidation;
@@ -12,8 +13,7 @@ public class RegisterUserValidator: AbstractValidator<RequestRegisterUserJson>
         
         RuleFor(user => user.Email).NotEmpty().WithMessage(ResourceMessageException.EMAIL_EMPTY);
         RuleFor(user => user.Email).EmailAddress().WithMessage(ResourceMessageException.EMAIL_INVALID);
-        
-        RuleFor(user => user.Password.Length).GreaterThanOrEqualTo(6)
-            .WithMessage(ResourceMessageException.PASSWORD_INVALID);
+
+        RuleFor(user => user.Password).SetValidator(new PasswordValidator<RequestRegisterUserJson>());
     }
 }

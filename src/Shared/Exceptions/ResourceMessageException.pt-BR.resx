@@ -45,4 +45,10 @@
     <data name="USER_WITHOUT_PERMISSION" xml:space="preserve">
         <value>Usuário não tem permissão para acessar esse endpoint!</value>
     </data>
+    <data name="PASSWORD_EQUAL" xml:space="preserve">
+        <value>As senhas não podem ser iguais!</value>
+    </data>
+    <data name="PASSWORD_DOES_NOT_MATCH" xml:space="preserve">
+        <value>A senha está incorreta!</value>
+    </data>
 </root>

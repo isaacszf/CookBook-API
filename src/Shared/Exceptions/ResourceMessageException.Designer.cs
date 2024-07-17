@@ -98,5 +98,17 @@ namespace Exceptions {
                 return ResourceManager.GetString("USER_WITHOUT_PERMISSION", resourceCulture);
             }
         }
+        
+        public static string PASSWORD_EQUAL {
+            get {
+                return ResourceManager.GetString("PASSWORD_EQUAL", resourceCulture);
+            }
+        }
+        
+        public static string PASSWORD_DOES_NOT_MATCH {
+            get {
+                return ResourceManager.GetString("PASSWORD_DOES_NOT_MATCH", resourceCulture);
+            }
+        }
     }
 }

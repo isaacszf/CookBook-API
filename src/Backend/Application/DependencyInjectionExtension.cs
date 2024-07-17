@@ -1,4 +1,5 @@
 using Application.Services.AutoMapper;
+using Application.UseCases.User.ChangePassword;
 using Application.UseCases.User.Login.DoLogin;
 using Application.UseCases.User.Profile;
 using Application.UseCases.User.Register;
@@ -22,6 +23,8 @@ public static class DependencyInjectionExtension
         
         services.AddScoped<IGetUserProfileUseCase, GetUserProfileUseCase>();
         services.AddScoped<IUpdateProfileUseCase, UpdateProfileUseCase>();
+        
+        services.AddScoped<IChangeUserPasswordUseCase, ChangeUserPasswordUseCase>();
     }
     
     private static void AddMapper(IServiceCollection services)

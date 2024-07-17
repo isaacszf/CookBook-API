@@ -45,4 +45,10 @@
     <data name="USER_WITHOUT_PERMISSION" xml:space="preserve">
         <value>User do not have permission to access this resource!</value>
     </data>
+    <data name="PASSWORD_EQUAL" xml:space="preserve">
+        <value>The passwords cannot be the same!</value>
+    </data>
+    <data name="PASSWORD_DOES_NOT_MATCH" xml:space="preserve">
+        <value>Given user password is incorrect!</value>
+    </data>
 </root>
