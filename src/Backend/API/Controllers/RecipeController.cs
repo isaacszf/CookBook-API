@@ -1,5 +1,7 @@
 using API.Attributes;
+using API.Binders;
 using Application.UseCases.Recipe.Filter;
+using Application.UseCases.Recipe.GetById;
 using Application.UseCases.Recipe.Register;
 using Communication.Requests;
 using Communication.Responses;
@@ -34,5 +36,18 @@ public class RecipeController : CookBookBaseController
 
         if (res.Recipes.Any()) return Ok(res);
         return NoContent();
+    }
+
+    [HttpGet]
+    [Route("{id}")]
+    [ProducesResponseType(typeof(ResponseRecipeJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetById(
+            [FromServices] IGetRecipeByIdUseCase useCase,
+            [FromRoute] [ModelBinder(typeof(CookBookIdBinder))] long id
+        )
+    {
+        var res = await useCase.Execute(id);
+        return Ok(res);
     }
 }

@@ -1,5 +1,6 @@
 using Application.Services.AutoMapper;
 using Application.UseCases.Recipe.Filter;
+using Application.UseCases.Recipe.GetById;
 using Application.UseCases.Recipe.Register;
 using Application.UseCases.User.ChangePassword;
 using Application.UseCases.User.Login.DoLogin;
@@ -15,7 +16,8 @@ public static class DependencyInjectionExtension
 {
     public static void AddApplication(this IServiceCollection services, IConfiguration config)
     {
-        AddMapper(services, config);
+        AddSqids(services, config);
+        AddMapper(services);
         AddUseCases(services);
     }
 
@@ -31,21 +33,26 @@ public static class DependencyInjectionExtension
 
         services.AddScoped<ICreateRecipeUseCase, CreateRecipeUseCase>();
         services.AddScoped<IFilterRecipeUseCase, FilterRecipeUseCase>();
+        services.AddScoped<IGetRecipeByIdUseCase, GetRecipeByIdUseCaseUseCase>();
     }
-    
-    private static void AddMapper(IServiceCollection services, IConfiguration config)
+
+    private static void AddSqids(IServiceCollection services, IConfiguration config)
     {
         var sqids = new SqidsEncoder<long>(new()
         {
             MinLength = 3,
             Alphabet = config.GetSection("Settings:IdCryptoAlphabet").Value!
         });
-        
-        var autoMapper = new AutoMapper.MapperConfiguration(opts =>
-        {
-            opts.AddProfile(new AutoMapping(sqids));
-        }).CreateMapper();
 
-        services.AddScoped(_ => autoMapper);
+        services.AddSingleton(sqids);
+    }
+    
+    private static void AddMapper(IServiceCollection services)
+    {
+        services.AddScoped(option => new AutoMapper.MapperConfiguration(opts =>
+        {
+            var sqids = option.GetService<SqidsEncoder<long>>()!;
+            opts.AddProfile(new AutoMapping(sqids));
+        }).CreateMapper());
     }
 }

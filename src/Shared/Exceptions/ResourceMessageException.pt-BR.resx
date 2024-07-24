@@ -81,4 +81,7 @@
     <data name="SAME_INSTRUCTION_ORDER" xml:space="preserve">
         <value>Não é possível criar uma receita com dois passos iguais</value>
     </data>
+    <data name="RECIPE_NOT_FOUND" xml:space="preserve">
+        <value>Receita não foi encontrada!</value>
+    </data>
 </root>

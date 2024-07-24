@@ -81,4 +81,7 @@
     <data name="SAME_INSTRUCTION_ORDER" xml:space="preserve">
         <value>Its not possible to create two insctructions with the same step</value>
     </data>
+    <data name="RECIPE_NOT_FOUND" xml:space="preserve">
+        <value>Recipe not found!</value>
+    </data>
 </root>

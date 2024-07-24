@@ -170,5 +170,11 @@ namespace Exceptions {
                 return ResourceManager.GetString("SAME_INSTRUCTION_ORDER", resourceCulture);
             }
         }
+        
+        public static string RECIPE_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("RECIPE_NOT_FOUND", resourceCulture);
+            }
+        }
     }
 }
