@@ -1,4 +1,5 @@
 using Domain.Repositories;
+using Domain.Repositories.Recipe;
 using Domain.Repositories.User;
 using Domain.Security.Tokens;
 using Domain.Services.Cryptography;
@@ -63,5 +64,7 @@ public static class DependencyInjectionExtension
         services.AddScoped<IUserReadOnlyRepository, UserRepository>();
         services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
         services.AddScoped<IUserUpdateOnlyRepository, UserRepository>();
+        
+        services.AddScoped<IRecipeWriteOnlyRepository, RecipeRepository>();
     }
 }

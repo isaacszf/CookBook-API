@@ -51,4 +51,34 @@
     <data name="PASSWORD_DOES_NOT_MATCH" xml:space="preserve">
         <value>Given user password is incorrect!</value>
     </data>
+    <data name="RECIPE_TITLE_EMPTY" xml:space="preserve">
+        <value>Recipe's title cannot be empty!</value>
+    </data>
+    <data name="COOKING_TIME_INVALID" xml:space="preserve">
+        <value>"CookingTime" is invalid!</value>
+    </data>
+    <data name="COOKING_DIFFICULTY_INVALID" xml:space="preserve">
+        <value>"CookingDifficulty" is invalid!</value>
+    </data>
+    <data name="AT_LEAST_ONE_INGREDIENT" xml:space="preserve">
+        <value>Recipe needs to have at least one ingredient</value>
+    </data>
+    <data name="AT_LEAST_ONE_INSTRUCTION" xml:space="preserve">
+        <value>Recipe needs to have at least one ingredient</value>
+    </data>
+    <data name="INVALID_DISH_TYPE" xml:space="preserve">
+        <value>Dish type does not exist</value>
+    </data>
+    <data name="INVALID_STEP" xml:space="preserve">
+        <value>Step cannot be negative</value>
+    </data>
+    <data name="INSTRUCTION_EMPTY" xml:space="preserve">
+        <value>Field "instruction" cannot be empty</value>
+    </data>
+    <data name="INSTRUCTION_EXCEEDS_LIMIT" xml:space="preserve">
+        <value>Instruction length cannot be greater than 2000</value>
+    </data>
+    <data name="SAME_INSTRUCTION_ORDER" xml:space="preserve">
+        <value>Its not possible to create two insctructions with the same step</value>
+    </data>
 </root>

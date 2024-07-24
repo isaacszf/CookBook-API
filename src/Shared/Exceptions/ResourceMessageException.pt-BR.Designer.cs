@@ -110,5 +110,65 @@ namespace Exceptions {
                 return ResourceManager.GetString("PASSWORD_DOES_NOT_MATCH", resourceCulture);
             }
         }
+        
+        internal static string RECIPE_TITLE_EMPTY {
+            get {
+                return ResourceManager.GetString("RECIPE_TITLE_EMPTY", resourceCulture);
+            }
+        }
+        
+        internal static string COOKING_TIME_INVALID {
+            get {
+                return ResourceManager.GetString("COOKING_TIME_INVALID", resourceCulture);
+            }
+        }
+        
+        internal static string COOKING_DIFFICULTY_INVALID {
+            get {
+                return ResourceManager.GetString("COOKING_DIFFICULTY_INVALID", resourceCulture);
+            }
+        }
+        
+        internal static string AT_LEAST_ONE_INGREDIENT {
+            get {
+                return ResourceManager.GetString("AT_LEAST_ONE_INGREDIENT", resourceCulture);
+            }
+        }
+        
+        internal static string INVALID_DISH_TYPE {
+            get {
+                return ResourceManager.GetString("INVALID_DISH_TYPE", resourceCulture);
+            }
+        }
+        
+        internal static string AT_LEAST_ONE_INSTRUCTION {
+            get {
+                return ResourceManager.GetString("AT_LEAST_ONE_INSTRUCTION", resourceCulture);
+            }
+        }
+        
+        internal static string INVALID_STEP {
+            get {
+                return ResourceManager.GetString("INVALID_STEP", resourceCulture);
+            }
+        }
+        
+        internal static string INSTRUCTION_EMPTY {
+            get {
+                return ResourceManager.GetString("INSTRUCTION_EMPTY", resourceCulture);
+            }
+        }
+        
+        internal static string INSTRUCTION_EXCEEDS_LIMIT {
+            get {
+                return ResourceManager.GetString("INSTRUCTION_EXCEEDS_LIMIT", resourceCulture);
+            }
+        }
+        
+        internal static string SAME_INSTRUCTION_ORDER {
+            get {
+                return ResourceManager.GetString("SAME_INSTRUCTION_ORDER", resourceCulture);
+            }
+        }
     }
 }
