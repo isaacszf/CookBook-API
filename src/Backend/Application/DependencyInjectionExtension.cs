@@ -1,4 +1,5 @@
 using Application.Services.AutoMapper;
+using Application.UseCases.Recipe.Filter;
 using Application.UseCases.Recipe.Register;
 using Application.UseCases.User.ChangePassword;
 using Application.UseCases.User.Login.DoLogin;
@@ -29,6 +30,7 @@ public static class DependencyInjectionExtension
         services.AddScoped<IChangeUserPasswordUseCase, ChangeUserPasswordUseCase>();
 
         services.AddScoped<ICreateRecipeUseCase, CreateRecipeUseCase>();
+        services.AddScoped<IFilterRecipeUseCase, FilterRecipeUseCase>();
     }
     
     private static void AddMapper(IServiceCollection services, IConfiguration config)
