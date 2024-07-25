@@ -48,6 +48,12 @@ public class RecipeRepository : IRecipeWriteOnlyRepository, IRecipeReadOnlyRepos
         return await userRecipesQuery.ToListAsync();
     }
 
+    public async Task Delete(long recipeId)
+    {
+        var recipe = await _dbContext.Recipes.FindAsync(recipeId);
+        _dbContext.Recipes.Remove(recipe!);
+    }
+    
     public async Task<Recipe?> GetById(User user, long recipeId)
     {
         return await _dbContext.Recipes

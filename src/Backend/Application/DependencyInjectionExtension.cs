@@ -1,4 +1,5 @@
 using Application.Services.AutoMapper;
+using Application.UseCases.Recipe.Delete;
 using Application.UseCases.Recipe.Filter;
 using Application.UseCases.Recipe.GetById;
 using Application.UseCases.Recipe.Register;
@@ -34,6 +35,7 @@ public static class DependencyInjectionExtension
         services.AddScoped<ICreateRecipeUseCase, CreateRecipeUseCase>();
         services.AddScoped<IFilterRecipeUseCase, FilterRecipeUseCase>();
         services.AddScoped<IGetRecipeByIdUseCase, GetRecipeByIdUseCaseUseCase>();
+        services.AddScoped<IDeleteRecipeByIdUseCase, DeleteRecipeByIdUseCase>();
     }
 
     private static void AddSqids(IServiceCollection services, IConfiguration config)
