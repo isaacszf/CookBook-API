@@ -15,6 +15,7 @@ public class ExceptionFilter: IExceptionFilter
         else HandleUnknownException(context);
     }
 
+    // TO-DO - make this better
     private static void HandleProjectException(ExceptionContext context)
     {
         switch (context.Exception)
@@ -26,6 +27,10 @@ public class ExceptionFilter: IExceptionFilter
             case InvalidLoginException:
                 context.HttpContext.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
                 context.Result = new UnauthorizedObjectResult(new ResponseErrorJson(context.Exception.Message));
+                break;
+            case NotFoundException:
+                context.HttpContext.Response.StatusCode = (int) HttpStatusCode.NotFound;
+                context.Result = new NotFoundObjectResult(new ResponseErrorJson(context.Exception.Message));
                 break;
         }
     }
