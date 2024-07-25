@@ -77,6 +77,17 @@ public class RecipeRepository : IRecipeWriteOnlyRepository, IRecipeReadOnlyRepos
                 r.Id.Equals(recipeId));
     }
 
+    public async Task<IList<Recipe>> GetFirstFive(User user)
+    {
+        return await _dbContext.Recipes
+            .AsNoTracking()
+            .Include(r => r.Ingredients)
+            .Where(r => r.Active && r.UserId.Equals(user.Id))
+            .OrderByDescending(r => r.CreatedAt)
+            .Take(5)
+            .ToListAsync();
+    }
+    
     private IIncludableQueryable<Recipe, ICollection<Instruction>> GetFullRecipeQuery()
     {
         return _dbContext.Recipes
