@@ -3,6 +3,7 @@ using Application.UseCases.Recipe.Delete;
 using Application.UseCases.Recipe.Filter;
 using Application.UseCases.Recipe.GetById;
 using Application.UseCases.Recipe.Register;
+using Application.UseCases.Recipe.Update;
 using Application.UseCases.User.ChangePassword;
 using Application.UseCases.User.Login.DoLogin;
 using Application.UseCases.User.Profile;
@@ -36,6 +37,7 @@ public static class DependencyInjectionExtension
         services.AddScoped<IFilterRecipeUseCase, FilterRecipeUseCase>();
         services.AddScoped<IGetRecipeByIdUseCase, GetRecipeByIdUseCaseUseCase>();
         services.AddScoped<IDeleteRecipeByIdUseCase, DeleteRecipeByIdUseCase>();
+        services.AddScoped<IUpdateRecipeUseCase, UpdateRecipeUseCase>();
     }
 
     private static void AddSqids(IServiceCollection services, IConfiguration config)

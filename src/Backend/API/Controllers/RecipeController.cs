@@ -4,6 +4,7 @@ using Application.UseCases.Recipe.Delete;
 using Application.UseCases.Recipe.Filter;
 using Application.UseCases.Recipe.GetById;
 using Application.UseCases.Recipe.Register;
+using Application.UseCases.Recipe.Update;
 using Communication.Requests;
 using Communication.Responses;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +26,20 @@ public class RecipeController : CookBookBaseController
         return Created(string.Empty, res);
     }
 
+    [HttpPut]
+    [Route("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Update(
+            [FromServices] IUpdateRecipeUseCase useCase,
+            [FromBody] RequestRecipeJson req,
+            [FromRoute] [ModelBinder(typeof(CookBookIdBinder))] long id
+        )
+    {
+        await useCase.Execute(id, req);
+        return Ok();
+    }
+    
     [HttpPost("filter")]
     [ProducesResponseType(typeof(ResponseRecipesJson), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
