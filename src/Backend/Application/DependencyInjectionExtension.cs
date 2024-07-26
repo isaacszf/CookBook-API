@@ -2,6 +2,7 @@ using Application.Services.AutoMapper;
 using Application.UseCases.Dashboard.Get;
 using Application.UseCases.Recipe.Delete;
 using Application.UseCases.Recipe.Filter;
+using Application.UseCases.Recipe.Generate;
 using Application.UseCases.Recipe.GetById;
 using Application.UseCases.Recipe.Register;
 using Application.UseCases.Recipe.Update;
@@ -39,6 +40,7 @@ public static class DependencyInjectionExtension
         services.AddScoped<IGetRecipeByIdUseCase, GetRecipeByIdUseCaseUseCase>();
         services.AddScoped<IDeleteRecipeByIdUseCase, DeleteRecipeByIdUseCase>();
         services.AddScoped<IUpdateRecipeUseCase, UpdateRecipeUseCase>();
+        services.AddScoped<IGenerateRecipeUseCase, GenerateRecipeUseCase>();
 
         services.AddScoped<IGetDashboardUseCase, GetDashboardUseCase>();
     }

@@ -4,6 +4,7 @@ using Domain.Repositories.User;
 using Domain.Security.Tokens;
 using Domain.Services.Cryptography;
 using Domain.Services.LoggedUser;
+using Domain.Services.OpenAI;
 using Infra.DataAccess;
 using Infra.DataAccess.Repositories;
 using Infra.Extensions;
@@ -11,9 +12,11 @@ using Infra.Security.Tokens.Access.Generator;
 using Infra.Security.Tokens.Access.Validator;
 using Infra.Services.Cryptography;
 using Infra.Services.LoggedUser;
+using Infra.Services.OpenAI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OpenAI_API;
 
 namespace Infra;
 
@@ -55,6 +58,13 @@ public static class DependencyInjectionExtension
         // Password
         var encryptApiKey = config.GetSection("Settings:Password:EncryptAPIKey").Value;
         services.AddScoped<IPasswordEncrypter>(_ => new PasswordEncrypter(encryptApiKey!));
+        
+        // OpenAI
+        var chatGptApiKey = config.GetSection("Settings:OpenAI:APIKey").Value;
+        var auth = new APIAuthentication(chatGptApiKey);
+        
+        services.AddScoped<IGenerateRecipeAi, ChatGptService>();
+        services.AddScoped<IOpenAIAPI>(_ => new OpenAIAPI(auth));
     }
     
     private static void AddRepos(IServiceCollection services)

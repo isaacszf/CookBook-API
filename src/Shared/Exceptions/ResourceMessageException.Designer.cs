@@ -176,5 +176,23 @@ namespace Exceptions {
                 return ResourceManager.GetString("RECIPE_NOT_FOUND", resourceCulture);
             }
         }
+        
+        public static string INVALID_NUM_INGREDIENTS {
+            get {
+                return ResourceManager.GetString("INVALID_NUM_INGREDIENTS", resourceCulture);
+            }
+        }
+        
+        public static string DUPLICATE_INGREDIENTS {
+            get {
+                return ResourceManager.GetString("DUPLICATE_INGREDIENTS", resourceCulture);
+            }
+        }
+        
+        public static string INGREDIENT_NOT_FOLLOWING_PATTERN {
+            get {
+                return ResourceManager.GetString("INGREDIENT_NOT_FOLLOWING_PATTERN", resourceCulture);
+            }
+        }
     }
 }

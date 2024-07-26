@@ -84,4 +84,13 @@
     <data name="RECIPE_NOT_FOUND" xml:space="preserve">
         <value>Recipe not found!</value>
     </data>
+    <data name="INVALID_NUM_INGREDIENTS" xml:space="preserve">
+        <value>Number of ingredients must be between 1-5.</value>
+    </data>
+    <data name="DUPLICATE_INGREDIENTS" xml:space="preserve">
+        <value>Cannot have duplicate ingredients!</value>
+    </data>
+    <data name="INGREDIENT_NOT_FOLLOWING_PATTERN" xml:space="preserve">
+        <value>Ingredient is not following the pattern.</value>
+    </data>
 </root>
